@@ -2,7 +2,7 @@
 	Written by Qingbei CHENG (z5042751@zmail.unsw.edu.au).
 	Commenced date: 21/05/2016.
 	Reference: https://www.cse.unsw.edu.au/~cs1911/16s1/assignments/snapchar/
-*/
+*/	
 
 #include <stdio.h>
 #include <math.h>
@@ -11,7 +11,7 @@
 #define MAX_Y       20
 
 
-//	I will make short explanations for every function below, much more details for these functions are shown after.
+//	I will make short explanations for every function below, much more details for these functions are shown below.
 void printImage(int image[MAX_X][MAX_Y]);
 
 int countBlackPixels(int image[MAX_X][MAX_Y]);
@@ -45,7 +45,7 @@ int right_bottom_corner(int image[MAX_X][MAX_Y]);
 
 
 /*	Function prototypes are shown below.
-	If you get confused somewhere, please do not be mad, I will show further explanation below the real functions. (otherwise it will be TOO MESSY)
+	If you get confused somewhere, please do not mad, I will show further explanation below the real functions. (otherwise it will be TOO MESSY)
 */
 
 void processImage(int image[MAX_X][MAX_Y]) {
@@ -74,10 +74,40 @@ void processImage(int image[MAX_X][MAX_Y]) {
 
 	/*	Distinguishing letters part below.
 		islands = 2 : i, j;
-		all other letters' island = 1;
-			holes = 2 : a, g;
-			holes = 1 : a, b, d, e, g;
-			holes = 0 : c, f, h, k ,l ,m;
+		island = 1 : abcdefghklm;
+
+			holes = 2 : ag;
+				rigjt_bottom_corner's number = 1 : a;
+				rigjt_bottom_corner's number = 0 : g;
+
+			holes = 1 : abdeg;
+				right_hand_side is higher : d;
+				left_hand_side is higher : b;
+				same height : aeg;
+
+					hole at bottom : a;
+					hole at top : eg
+						horizontal_balance > 0.5 : g;
+						horizontal_balance <= 0.5 : e;
+				
+			holes = 0 : cfhklm;
+				times that top horizontal line intersects with the letter = 2 : m;
+				times that top horizontal line intersects with the letter = 1 : cfhklm;
+
+					maximum horizontal intersection = 3 : m;
+					maximum horizontal intersection = 2 : cfhkl;
+
+						times that the letter touches the x-axis boundary = 1 : cfl;
+							times that the rightest verital line can intersect with the letter = 1 : fl;
+								vertical balance > 0.5 : f;
+								vertical balance <= 0.5 : l;
+							times that the rightest verital line can intersect with the letter = 2 : c;
+
+						times that the letter touches the x-axis boundary = 2 : hk;
+							times that the rightest verital line can intersect with the letter = 2 : k;
+							times that the rightest verital line can intersect with the letter = 1 : hk;
+								times that the vertical line at the 5/6 x-coordinate of the letter can intersect with the letter = 2 : k;
+								times that the vertical line at the 5/6 x-coordinate of the letter can intersect with the letter = 1 : h;
 
 	*/
 
@@ -130,7 +160,7 @@ void processImage(int image[MAX_X][MAX_Y]) {
 			//cfhklm
 
 			if (top_intersect == 2) {
-				//sometimes m can only have 2 intersection with a horizontal line, such as m3 picture.
+				//sometimes m can only have 2 intersection with a horizontal line, such as m3 image.
 				letter = 'm';
 			} else {
 
@@ -165,10 +195,10 @@ void processImage(int image[MAX_X][MAX_Y]) {
 						}
 					}
 				}
-			}
+			}	
 		}
 	}
-
+		
 
 	// Printing part below.
 
@@ -495,7 +525,7 @@ int countHoles(int image[MAX_X][MAX_Y]){
 		}
 	}
 	return number_of_holes;
-}
+}			
 
 
 /*	This function below records the maximum numbers of zeros in holes of the input letters.
@@ -597,7 +627,7 @@ int countMaxZeroOfHoles(int image[MAX_X][MAX_Y]) {
 											while (begin_top_of_hole + i <= end_top_of_hole) {
 												if (image[begin_top_of_hole + i][y + 1] != 1) {
 													top_line_of_hole_exists = 0;
-
+													
 												}
 												i = i + 1;
 											}
@@ -662,7 +692,7 @@ int countIslands(int image[MAX_X][MAX_Y]) {
         y = y - 1;
     }
 	return number_of_islands;
-}
+}	
 
 
 /*	This function below aims to count the maximum times of intersection that a horizontal line can make with the letter.
@@ -688,7 +718,7 @@ int countMax_h_Intersect(int image[MAX_X][MAX_Y]) {
 				if (x == MAX_X) {
 					break;
 				}
-
+				
 				while (image[x][y] == 1) {
 					x = x + 1;
 					if (x == MAX_X) {
@@ -1112,7 +1142,7 @@ int middle_above_hole(int image[MAX_X][MAX_Y]) {
 			}
 		}
 	}
-
+	
 	if (number_of_holes > 0) {
 		return 1;
 	} else {
@@ -1219,7 +1249,7 @@ int top_horizontally_intersect(int image[MAX_X][MAX_Y]) {
 //	It was designed for distinguishing letters "a" and "g", as we can see from the reference images that the right bottom corner of letter "a" is 1, but for "g", it is 0.
 
 int right_bottom_corner(int image[MAX_X][MAX_Y]) {
-
+	
 	int x, y;
 	x = MAX_X - 1;
 	while (x >= 0) {
@@ -1343,3 +1373,4 @@ void readImage(FILE *stream, int image[MAX_X][MAX_Y]) {
         for (x = 0; x < MAX_X; x = x + 1)
             image[x][y] = 0;
 }
+

@@ -1,0 +1,16 @@
+Diary for assignment 1.
+
+Date			Time			Activity				Comments
+15/04			6-8 pm			Coding					Odd % Even triple part set up.
+15/04			10-11pm			Debugging				Found error and bugs and corrected.
+17/04			7-10 pm			Coding					Run part set up.		
+19/04			7-8 pm			Debugging				Found error and bugs and corrected.
+20/04			7-10 pm			Coding					Sequence part set up.
+21/04			8-10 pm			Coding					Continued coding sequence part.
+22/04			6-7 pm			Coding					Part of sequence finished.
+22/04			8-10 pm			Debugging				Found error and bugs and corrected.
+22/04			10 pm - 2 am	Coding					Continued coding sequence part.
+23/04			12-1 pm			Coding					Finished sequence part.
+23/04			2-6 pm			Debugging				Finished debugging.
+23/04			8-9 pm			Simplifing				Simplified the program and add more explanations to make it more readable.
+23/04			9.30 pm			Submission				Program submitted.

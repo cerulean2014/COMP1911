@@ -1,0 +1,13 @@
+CHENG, Qingbei's diary for ass2.
+Email: z5042751@zmail.unsw.edu.au
+
+Date		Start		Stop		Activity			Comments
+21/05		7pm			12am		coding & debugging	For attributes except holes and islands
+22/05		2pm			5pm			coding				Holes and Islands
+22/05		8pm			12am		coding & debugging	Holes and Holeness
+23/05		8pm			12am		coding				Recognition
+24/05		8pm			12am		coding & debugging	Recognition
+25/05		9pm			12am		coding & debugging	Recognition
+26/05		1am			1am			submission			Program submitted first time
+26/05		9pm			10pm		submission			Made some improvement and submitted second time
+29/05		12pm		1pm			submission			Made some improvement and submitted last time
